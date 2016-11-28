@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_play_game"
     android:layout_width="match_parent"
@@ -11,4 +12,105 @@
     tools:context="rtc.rattanamon.warawan.questiongames.PlayGame"
     android:background="@drawable/bg">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linTop">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/holo_red_dark" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/answer"
+        android:id="@+id/imageView9"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linTop"
+        android:layout_above="@+id/imageView9"
+        android:layout_margin="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/imageView10" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ragchoice"
+                android:elevation="2dp"
+                android:layout_marginLeft="60dp" >
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton3"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_green_light" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton2"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_green_light" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_green_light" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
