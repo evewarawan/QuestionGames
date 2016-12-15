@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="rtc.rattanamon.warawan.questiongames.MainActivity"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg11"
     android:layout_alignParentTop="false"
     android:layout_alignParentLeft="false">
 
@@ -22,17 +22,4 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cartoon"
-        android:id="@+id/imageView4"
-        android:layout_marginTop="150dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/game"
-        android:id="@+id/imageView8"
-        android:layout_marginTop="-100dp" />
 </RelativeLayout>
