@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="rtc.rattanamon.warawan.questiongames.MainLevel"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg001"
     android:layout_centerHorizontal="false">
 
     <ImageView
@@ -18,14 +18,14 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/level1"
         android:id="@+id/imageView6"
-        android:layout_marginTop="300dp" />
+        android:layout_marginTop="350dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/level0"
         android:id="@+id/imageView5"
-        android:layout_marginTop="180dp" />
+        android:layout_marginTop="200dp" />
 
     <ImageView
         android:layout_width="wrap_content"
