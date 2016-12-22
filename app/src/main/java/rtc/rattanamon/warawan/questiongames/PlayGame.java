@@ -3,10 +3,12 @@ package rtc.rattanamon.warawan.questiongames;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -16,13 +18,13 @@ import org.json.JSONObject;
 public class PlayGame extends AppCompatActivity {
 
     // Explicit
-    private int catAnInt, LevelAnInt;
+    private int catAnInt, LevelAnInt, fullTimes, times = 0;
     private String[] questionStrings, choice1Strings, choice2Strings,
             choice3Strings, answerStrings, imageStrings;
     private TextView questionTextView;
     private RadioGroup radioGroup;
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
-    private ImageView imageView;
+    private ImageView imageView, answerImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,21 @@ public class PlayGame extends AppCompatActivity {
 
         createView();
 
+        answerImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.d("22decV1", "fullTime ==> " + fullTimes);
+                if (times >= fullTimes) {
+                    Toast.makeText(PlayGame.this, "หมดข้อแล้ว", Toast.LENGTH_SHORT).show();
+                } else {
+                    times += 1;
+                    showView(times);
+                }
+
+            }   // onClick
+        });
+
 
     } // Main Method
 
@@ -49,6 +66,7 @@ public class PlayGame extends AppCompatActivity {
         choice2RadioButton = (RadioButton) findViewById(R.id.radioButton2);
         choice3RadioButton = (RadioButton) findViewById(R.id.radioButton3);
         imageView = (ImageView) findViewById(R.id.imageView10);
+        answerImageView = (ImageView) findViewById(R.id.imageView9);
     }
 
     private void createView() {
@@ -62,6 +80,7 @@ public class PlayGame extends AppCompatActivity {
             Log.d("28novV1", "JSON ==> " + strJSoN);
 
             JSONArray jsonArray = new JSONArray(strJSoN);
+            fullTimes = jsonArray.length();
             questionStrings = new String[jsonArray.length()];
             choice1Strings = new String[jsonArray.length()];
             choice2Strings = new String[jsonArray.length()];
