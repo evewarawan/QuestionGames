@@ -1,6 +1,8 @@
 package rtc.rattanamon.warawan.questiongames;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,13 +20,15 @@ import org.json.JSONObject;
 public class PlayGame extends AppCompatActivity {
 
     // Explicit
-    private int catAnInt, LevelAnInt, fullTimes, times = 0;
+    private int catAnInt, LevelAnInt, fullTimes, times = 0,
+            myTime = 0, scoreAnInt = 0, myChoose = 0;
     private String[] questionStrings, choice1Strings, choice2Strings,
             choice3Strings, answerStrings, imageStrings;
-    private TextView questionTextView;
+    private TextView questionTextView, timeTextView, scoreTextView;
     private RadioGroup radioGroup;
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
     private ImageView imageView, answerImageView;
+    private boolean aBoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +41,67 @@ public class PlayGame extends AppCompatActivity {
         // Get Value From Intent
         catAnInt = getIntent().getIntExtra("Cat", 0);
         LevelAnInt = getIntent().getIntExtra("Level", 0);
-        Log.d("28novV1", "(Cat, Level) ==> (" + catAnInt + "," + LevelAnInt + ")");
+        Log.d("30decV1", "(Cat, Level) ==> (" + catAnInt + "," + LevelAnInt + ")");
+
+        scoreTextView.setText(getResources().getString(R.string.score) + "0");
 
         createView();
 
+        checkTimes();
+
+        //Radio Controller
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (i) {
+                    case R.id.radioButton:
+                        myChoose = 1;
+                        break;
+                    case R.id.radioButton2:
+                        myChoose = 2;
+                        break;
+                    case R.id.radioButton3:
+                        myChoose = 3;
+                        break;
+                }
+
+            }
+        });
+
+        //Answer Controller
         answerImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Log.d("22decV1", "fullTime ==> " + fullTimes);
-                if (times >= fullTimes) {
+                //Check Score
+                if (myChoose == Integer.parseInt(answerStrings[times])) {
+                    scoreAnInt += 1;
+                    scoreTextView.setText("คะแนน = " + Integer.toString(scoreAnInt));
+                }
+
+                Log.d("30decV1", "fullTime ==> " + fullTimes);
+                if (times >= (fullTimes - 1)) {
+
                     Toast.makeText(PlayGame.this, "หมดข้อแล้ว", Toast.LENGTH_SHORT).show();
+                    aBoolean = false;
+                    Intent intent = new Intent(PlayGame.this, ShowScore.class);
+                    intent.putExtra("Score", scoreAnInt);
+                    intent.putExtra("Cat", catAnInt);
+                    intent.putExtra("Level", LevelAnInt);
+                    startActivity(intent);
+                    finish();
+
                 } else {
+
+
+
                     times += 1;
                     showView(times);
                 }
+
+
+
 
                 radioGroup.clearCheck();
 
@@ -61,6 +111,42 @@ public class PlayGame extends AppCompatActivity {
 
     } // Main Method
 
+    private void checkTimes() {
+
+        //To Do
+
+        if (myTime == 120) {
+
+            Intent intent = new Intent(PlayGame.this, ShowScore.class);
+            intent.putExtra("Score", scoreAnInt);
+            intent.putExtra("Cat", catAnInt);
+            intent.putExtra("Level", LevelAnInt);
+            startActivity(intent);
+            finish();
+
+        } else {
+
+            timeTextView.setText(Integer.toString(120 - myTime) + " วินาที");
+            myTime += 1;
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (aBoolean) {
+                        checkTimes();
+                    }
+
+                }
+            }, 1000);
+
+
+        }
+
+
+    }   // checkTimes
+
     private void bindWidget() {
         questionTextView = (TextView) findViewById(R.id.textView5);
         radioGroup = (RadioGroup) findViewById(R.id.ragchoice);
@@ -69,7 +155,10 @@ public class PlayGame extends AppCompatActivity {
         choice3RadioButton = (RadioButton) findViewById(R.id.radioButton3);
         imageView = (ImageView) findViewById(R.id.imageView10);
         answerImageView = (ImageView) findViewById(R.id.imageView9);
-        radioGroup = (RadioGroup)findViewById(R.id.ragchoice);
+        radioGroup = (RadioGroup) findViewById(R.id.ragchoice);
+        timeTextView = (TextView) findViewById(R.id.textView);
+        scoreTextView = (TextView) findViewById(R.id.textView2);
+
     }
 
     private void createView() {
@@ -111,12 +200,12 @@ public class PlayGame extends AppCompatActivity {
 
     private void showView(int index) {
 
-        questionTextView.setText(Integer.toString(index + 1) + ". " + questionStrings[index]);
-        choice1RadioButton.setText(choice1Strings[index]);
-        choice2RadioButton.setText(choice2Strings[index]);
-        choice3RadioButton.setText(choice3Strings[index]);
-
         try {
+
+            questionTextView.setText(Integer.toString(index + 1) + ". " + questionStrings[index]);
+            choice1RadioButton.setText(choice1Strings[index]);
+            choice2RadioButton.setText(choice2Strings[index]);
+            choice3RadioButton.setText(choice3Strings[index]);
 
             Picasso.with(PlayGame.this).load(imageStrings[index]).into(imageView);
 

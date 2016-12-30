@@ -44,6 +44,7 @@ public class MainHub extends AppCompatActivity implements View.OnClickListener {
         Intent intent = new Intent(MainHub.this, MainLevel.class);
         intent.putExtra("Cat", anInt);
         startActivity(intent);
+        finish();
 
     } //onclick
 }

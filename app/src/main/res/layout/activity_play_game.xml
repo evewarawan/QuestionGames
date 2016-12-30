@@ -39,12 +39,24 @@
             android:textColor="@android:color/holo_red_dark" />
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/answer"
+        android:id="@+id/imageView9"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/scrollView2"
+        android:layout_alignStart="@+id/scrollView2"
+        android:layout_marginLeft="209dp"
+        android:layout_marginStart="209dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/linTop"
-        android:layout_above="@+id/imageView9"
-        android:layout_margin="20dp">
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/imageView9">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,15 +125,4 @@
             </RadioGroup>
         </LinearLayout>
     </ScrollView>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/answer"
-        android:id="@+id/imageView9"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/scrollView2"
-        android:layout_alignStart="@+id/scrollView2"
-        android:layout_marginLeft="209dp"
-        android:layout_marginStart="209dp" />
 </RelativeLayout>
