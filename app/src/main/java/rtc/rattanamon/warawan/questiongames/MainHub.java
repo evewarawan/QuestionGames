@@ -1,6 +1,7 @@
 package rtc.rattanamon.warawan.questiongames;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ public class MainHub extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView cat0ImageView, cat1ImageView; // 0==>คิดเลข , 1 ==> อะไรเอ่ย
     private int anInt;
+    private MediaPlayer mediaPlayer;
 
 
 
@@ -22,6 +24,8 @@ public class MainHub extends AppCompatActivity implements View.OnClickListener {
 
         cat0ImageView = (ImageView) findViewById(R.id.imageView);
         cat1ImageView = (ImageView) findViewById(R.id.imageView3);
+        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.tone);
+        mediaPlayer.start();
 
         //Image controller
         cat0ImageView.setOnClickListener(this);
@@ -41,6 +45,7 @@ public class MainHub extends AppCompatActivity implements View.OnClickListener {
                 anInt = 1;
                 break;
         }
+        mediaPlayer.stop();
         Intent intent = new Intent(MainHub.this, MainLevel.class);
         intent.putExtra("Cat", anInt);
         startActivity(intent);

@@ -1,6 +1,7 @@
 package rtc.rattanamon.warawan.questiongames;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +30,16 @@ public class PlayGame extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
     private ImageView imageView, answerImageView;
     private boolean aBoolean = true;
-    private int[] soundInts  = new int[]{R.raw.ok1, R.raw.no, R.raw.tone};
+    private int[] soundInts  = new int[]{R.raw.ok1, R.raw.tone};
+    private MediaPlayer mediaPlayer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
+        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.tone);
+        mediaPlayer.start();
 
         //Bind Widget
         bindWidget();
@@ -80,11 +84,17 @@ public class PlayGame extends AppCompatActivity {
                 if (myChoose == Integer.parseInt(answerStrings[times])) {
                     scoreAnInt += 1;
                     scoreTextView.setText("คะแนน = " + Integer.toString(scoreAnInt));
+
+
+
+
+                } else {
+
                 }
 
                 Log.d("30decV1", "fullTime ==> " + fullTimes);
                 if (times >= (fullTimes - 1)) {
-
+                    mediaPlayer.stop();
                     Toast.makeText(PlayGame.this, "หมดข้อแล้ว", Toast.LENGTH_SHORT).show();
                     aBoolean = false;
                     Intent intent = new Intent(PlayGame.this, ShowScore.class);
@@ -118,7 +128,7 @@ public class PlayGame extends AppCompatActivity {
         //To Do
 
         if (myTime == 120) {
-
+            mediaPlayer.stop();
             Intent intent = new Intent(PlayGame.this, ShowScore.class);
             intent.putExtra("Score", scoreAnInt);
             intent.putExtra("Cat", catAnInt);

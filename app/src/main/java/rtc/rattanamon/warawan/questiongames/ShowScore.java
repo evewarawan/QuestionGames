@@ -1,6 +1,7 @@
 package rtc.rattanamon.warawan.questiongames;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class ShowScore extends AppCompatActivity implements View.OnClickListener
     private int[] levInts = new int[]{R.drawable.level0, R.drawable.level1,
             R.drawable.levell10, R.drawable.levell11};
     private int levAnInt, catAnInt, scoreAnInt;
+    private MediaPlayer mediaPlayer,mediaPlayer2;
 
 
     @Override
@@ -31,6 +33,10 @@ public class ShowScore extends AppCompatActivity implements View.OnClickListener
         textView = (TextView) findViewById(R.id.textView3);
         playButton = (Button) findViewById(R.id.button);
         exitButton = (Button) findViewById(R.id.button2);
+        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.tone);
+        mediaPlayer.start();
+        mediaPlayer2 = MediaPlayer.create(getBaseContext(),R.raw.ok1);
+        mediaPlayer2.start();
 
         //Show View
         catAnInt = getIntent().getIntExtra("Cat", 0);
@@ -69,7 +75,7 @@ public class ShowScore extends AppCompatActivity implements View.OnClickListener
             startActivity(new Intent(ShowScore.this, MainHub.class));
             finish();
         }
-
+        mediaPlayer.start();
         finish();
 
     }

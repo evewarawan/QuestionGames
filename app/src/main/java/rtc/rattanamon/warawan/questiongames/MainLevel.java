@@ -1,6 +1,7 @@
 package rtc.rattanamon.warawan.questiongames;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,9 @@ public class MainLevel extends AppCompatActivity implements View.OnClickListener
     private int[] levInts = new int[]{R.drawable.level0, R.drawable.level1,
             R.drawable.levell10, R.drawable.levell11};
     private int levAnInt;
+    private MediaPlayer mediaPlayer;
+
+
 
 
     @Override
@@ -24,6 +28,8 @@ public class MainLevel extends AppCompatActivity implements View.OnClickListener
         easyImageView = (ImageView) findViewById(R.id.imageView5);
         difImageView = (ImageView) findViewById(R.id.imageView6);
         imageView = (ImageView) findViewById(R.id.imageView7);
+        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.tone);
+        mediaPlayer.start();
 
         // Get value From Intent
         catAnInt = getIntent().getIntExtra("Cat", 0);
@@ -64,7 +70,7 @@ public class MainLevel extends AppCompatActivity implements View.OnClickListener
                 levelAnInt = 1;
                 break;
         }
-
+        mediaPlayer.stop();
         Intent intent = new Intent(MainLevel.this, PlayGame.class);
         intent.putExtra("Cat", catAnInt);
         intent.putExtra("Level", levelAnInt);
