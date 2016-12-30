@@ -68,14 +68,13 @@
                 android:text="TextView"
                 android:layout_width="wrap_content"
                 android:id="@+id/textView5"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="normal|bold"
                 android:textColor="@android:color/holo_red_dark"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="15dp"
                 tools:layout_gravity="left"
                 android:foregroundGravity="left"
-                android:layout_weight="1.85"
                 android:layout_height="wrap_content" />
 
             <ImageView
@@ -98,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/radioButton"
-                    android:textSize="27sp"
+                    android:textSize="26sp"
                     android:textColor="@android:color/white"
                     android:gravity="center|start"
                     android:layout_weight="1" />
@@ -108,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/radioButton2"
-                    android:textSize="27sp"
+                    android:textSize="26sp"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="20dp" />
 
@@ -118,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/radioButton3"
                     android:layout_weight="1"
-                    android:textSize="27sp"
+                    android:textSize="26sp"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="20dp" />
 

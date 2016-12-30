@@ -29,6 +29,8 @@ public class PlayGame extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton, choice3RadioButton;
     private ImageView imageView, answerImageView;
     private boolean aBoolean = true;
+    private int[] soundInts  = new int[]{R.raw.ok1, R.raw.no, R.raw.tone};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
