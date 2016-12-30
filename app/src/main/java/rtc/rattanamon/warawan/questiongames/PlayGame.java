@@ -53,6 +53,8 @@ public class PlayGame extends AppCompatActivity {
                     showView(times);
                 }
 
+                radioGroup.clearCheck();
+
             }   // onClick
         });
 
@@ -67,6 +69,7 @@ public class PlayGame extends AppCompatActivity {
         choice3RadioButton = (RadioButton) findViewById(R.id.radioButton3);
         imageView = (ImageView) findViewById(R.id.imageView10);
         answerImageView = (ImageView) findViewById(R.id.imageView9);
+        radioGroup = (RadioGroup)findViewById(R.id.ragchoice);
     }
 
     private void createView() {

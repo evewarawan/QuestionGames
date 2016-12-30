@@ -88,9 +88,17 @@
                     android:id="@+id/radioButton"
                     android:textSize="27sp"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="0dp"
                     android:gravity="center|start"
                     android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton2"
+                    android:textSize="27sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="20dp" />
 
                 <RadioButton
                     android:text="RadioButton"
@@ -99,15 +107,8 @@
                     android:id="@+id/radioButton3"
                     android:layout_weight="1"
                     android:textSize="27sp"
-                    android:textColor="@android:color/white" />
-
-                <RadioButton
-                    android:text="RadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton2"
-                    android:textSize="27sp"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="20dp" />
 
             </RadioGroup>
         </LinearLayout>
